@@ -5,7 +5,7 @@ app.service('fullwModalService', ['$uibModal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '../angular-templates/modalInformeAgregar.html'
+            templateUrl: './angular-templates/modalInformeAgregar.html'
         };
 
         var modalOptions = {
