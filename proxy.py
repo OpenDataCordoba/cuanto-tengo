@@ -5,7 +5,6 @@ from flask import Flask, send_file, Response, make_response, request
 
 
 URL_BASE = 'https://200.123.180.122:5743'
-ID = '3382953'
 SALDO = '/rest/getSaldoCaptcha/'
 app = Flask(__name__)
 
@@ -27,9 +26,9 @@ def hello():
     return response
 
 
-@app.route("/saldo/<captcha>")
-def saldo(captcha):
+@app.route("/rest/getSaldoCaptcha/<tarjeta>/<captcha>")
+def saldo(tarjeta, captcha):
     jsessionid = request.cookies['JSESSIONID']
-    url = URL_BASE + SALDO + ID + '/' + captcha
+    url = URL_BASE + SALDO + tarjeta + '/' + captcha
     res = requests.get(url, verify=False, cookies={'JSESSIONID': jsessionid})
     return res.content
