@@ -5,7 +5,7 @@ app.service('fullwModalVersionService', ['$uibModal',
             backdrop: true,
             keyboard: false ,
             modalFade: true,
-            templateUrl: '../www/angular-templates/modalInformeVersion.html'
+            templateUrl: 'angular-templates/modalInformeVersion.html'
         };
 
         var modalOptions = {

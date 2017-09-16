@@ -5,7 +5,7 @@ app.service('modalService', ['$uibModal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '../angular-templates/modalDelete.html'
+            templateUrl: 'angular-templates/modalDelete.html'
         };
 
         var modalOptions = {

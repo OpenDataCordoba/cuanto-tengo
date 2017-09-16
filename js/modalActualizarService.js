@@ -5,7 +5,7 @@ app.service('modalActualizarService', ['$uibModal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '../angular-templates/modalActualizarTarjeta.html'
+            templateUrl: 'angular-templates/modalActualizarTarjeta.html'
         };
 
         var modalOptions = {
