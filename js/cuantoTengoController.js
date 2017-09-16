@@ -37,7 +37,7 @@ app.controller('versionController', ['$scope', '$window', 'uuid', '$http', 'full
     $http({
       method: 'GET',
       crossDomain: true,
-      withCredentials: true,
+        withCredentials: true,
       url: url_destino+"/v2/redbus-data/app-redbus/1/",
     }).then(function successCallback(response) {
         var lastChecked = $scope.storage.getItem('lastChecked')
