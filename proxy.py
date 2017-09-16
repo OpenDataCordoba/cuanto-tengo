@@ -11,15 +11,8 @@ app = Flask(__name__)
 
 
 def get():
-    res = requests.get(URL_BASE + '/captcha.png', stream=True, verify=False)
-    if res.status_code == 200:
-        with open('captcha.png', 'wb') as f:
-            res.raw.decode_content = True
-            shutil.copyfileobj(res.raw, f)
-
     res = requests.get(URL_BASE + '/captcha.png', verify=False)
     cookie = res.headers['Set-Cookie']
-    print(res.headers)
     body = BytesIO(res.content)
     return body, cookie
 
@@ -27,17 +20,16 @@ def get():
 @app.route("/captcha.png")
 def hello():
     body, cookie = get()
+    jsession = cookie.split(';')[0].split('=')[1]
     response = make_response(body.read())
     response.headers['Content-Type'] = 'image/png'
-    response.set_cookie('Set-Cookie', cookie)
+    response.set_cookie('JSESSIONID', jsession)
     return response
-    # return send_file('captcha.png')
 
 
 @app.route("/saldo/<captcha>")
 def saldo(captcha):
-    # print(request.cookies['Set'])
+    jsessionid = request.cookies['JSESSIONID']
     url = URL_BASE + SALDO + ID + '/' + captcha
-    res = requests.get(url, verify=False)
-    print(res.content)
+    res = requests.get(url, verify=False, cookies={'JSESSIONID': jsessionid})
     return res.content
